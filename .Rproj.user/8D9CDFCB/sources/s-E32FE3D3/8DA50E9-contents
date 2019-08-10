@@ -59,7 +59,11 @@ class(a2Vector)
 ```
 
 ```{r}
-class(aVector)
+class(aVectorc)
+```
+
+```{r}
+
 ```
 
 
