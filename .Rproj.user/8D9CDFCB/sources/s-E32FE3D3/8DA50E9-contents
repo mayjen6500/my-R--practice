@@ -2,6 +2,66 @@
 title: "Untitled"
 output: html_document
 ---
+# Create an object with values
+
+```{r}
+a <- 2
+3 -> b
+```
+
+```{r}
+65+b
+```
+
+```{r}
+c <- 47
+65+c
+```
+
+```{r}
+`c`
+```
+
+```{r}
+`108我的成績` <- 95
+```
+
+```{r}
+108我的成績 <- 95
+```
+
+# numeric class
+
+```{r}
+class(a)
+```
+
+```{r}
+a <- 5
+a2 <- 5L
+```
+
+```{r}
+class(a)
+```
+
+```{r}
+class(a2)
+```
+
+```{r}
+aVector <- c(5,6,7)
+a2Vector <- c(5L,6L,7L)
+```
+
+```{r}
+class(a2Vector)
+```
+
+```{r}
+class(aVector)
+```
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
