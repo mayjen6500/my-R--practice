@@ -8,7 +8,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
+# 4-4Character/String (vector)
 ```{r}
 dialogue <- c('小名說:"你好嗎?"',
               '小花說:"還行。"')
@@ -16,6 +16,7 @@ cat(dialogue,sep="\n")
 ```
 
 ```{r}
+# 兩句話逗號間 用對稱的"或'區分
 dialogue <- c("小名說:'你好嗎?'",
               "小花說:'還行。'")
 cat(dialogue,sep="\n")
@@ -26,6 +27,119 @@ dialogue <- c(小名說:'你好嗎?',
               小花說:'還行。')
 cat(dialogue,sep="\n")
 ```
+# 4-5Logical
+```{r}
+aLogical <- c(T,TRUE,F,FALSE,FALSE)
+class(aLogical)
+```
+
+```{r}
+# 加總向量內的所有元素值。
+sum(aLogical)
+```
+# 4-6Factor
+```{r}
+studentMajors <- factor( c("經濟系", "經濟系", "法律系") )
+```
+
+```{r}
+studentMajors0 <- c("經濟系", "經濟系", "法律系")
+```
+
+```{r}
+# 這是類別，不是字串
+class(studentMajors)
+```
+
+```{r}
+# 這是字串
+class(studentMajors0)
+```
+
+```{r}
+studentMajors
+```
+
+```{r}
+typeof(studentMajors)
+```
+
+```{r}
+# levels顯示的類別名稱（categorical values）順序整數值即R真正儲存的內容:法律系會存成1; 經濟系會存成2
+
+levels(studentMajors)
+```
+
+```{r}
+# as.integer(...)會將…物件（嘗試）轉成integer class的物件
+
+as.integer(studentMajors)
+```
+
+```{r}
+stringInteger <- c("1","2","-11")
+class(stringInteger) # 無法進行數值運算
+
+# as.integer可以把字串改為數字 來進行運算
+trueInteger <- as.integer(stringInteger)
+class(trueInteger) # 可以進行數值運算
+```
+
+```{r}
+stringInteger
+trueInteger
+```
+
+# 4-7 Date and Time
+
+```{r}
+library(lubridate)
+```
+
+```{r}
+# 產生一個DateTime物件
+
+dtObject<-ymd_hms("1970-01-01 00:02:53") 
+```
+
+```{r}
+# 產生一個DateTime物件向量：使用c(...)形成向量
+
+dtObjectVector<-ymd_hms(
+  c("1970-01-01 00:02:53",
+    "1980-02-11 11:25:22")
+)
+```
+
+```{r}
+class(dtObject)
+```
+
+```{r}
+dtObject
+```
+
+```{r}
+typeof(dtObject)
+```
+
+```{r}
+as.integer(dtObject)
+```
+
+```{r}
+as.double(dtObject)
+```
+
+```{r}
+Sys.timezone()
+```
+
+
+
+
+
+
 
 ## R Markdown
 

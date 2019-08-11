@@ -1,0 +1,8 @@
+"0","# as.integer(...)會將…物件（嘗試）轉成integer class的物件"
+"0","as.integer(studentMajors)"
+"1","[1]"
+"1"," 2"
+"1"," 2"
+"1"," 1"
+"1","
+"
