@@ -135,21 +135,8 @@ as.double(dtObject)
 Sys.timezone()
 ```
 
-```{r}
-twDateTime <- ymd_hms("2019-08-13 13:40:00", tz="Asia/Taipei")
-twDateTime
-```
 
-```{r}
-LisbonDateTime <- with_tz(twDateTime,tzone="Europe/Lisbon")
-LisbonDateTime
-```
 
-```{r}
-typeof(twDateTime)
-as.double(twDateTime)
-as.double(LisbonDateTime)
-```
 
 
 
