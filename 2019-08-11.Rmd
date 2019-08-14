@@ -151,6 +151,15 @@ as.double(twDateTime)
 as.double(LisbonDateTime)
 ```
 
+```{r}
+library(lubridate)
+dtobject2 <- ymd("2018-09-11")
+dtobject <- mdy_hms("03-14-2019 08:18:47")
+dtobject2
+dtobject
+
+```
+
 
 
 
