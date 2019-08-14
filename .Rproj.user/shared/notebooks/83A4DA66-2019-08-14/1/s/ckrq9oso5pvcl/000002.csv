@@ -1,0 +1,2 @@
+"0","twDateTime2 <- ymd_hms(""2019-03-20 14:04:00"", tz=""Asia/Taipei"")"
+"0","twDateTime3 <- ymd_hms(""2019-03-20 14:04:30"", tz=""Asia/Taipei"")"
