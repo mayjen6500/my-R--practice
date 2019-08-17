@@ -1,0 +1,6 @@
+"0","satisfyBoth <- isNotNA & isEuro"
+"0","sum(satisfyBoth)"
+"1","[1]"
+"1"," 297"
+"1","
+"

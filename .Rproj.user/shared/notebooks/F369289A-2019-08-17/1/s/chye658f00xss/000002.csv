@@ -1,0 +1,6 @@
+"0","satifyBoth <- !is.na(exchangeRate) & currency == ""歐元USD/EUR"""
+"0","sum(satifyBoth)"
+"1","[1]"
+"1"," 297"
+"1","
+"

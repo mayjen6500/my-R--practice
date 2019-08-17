@@ -1,0 +1,6 @@
+"0","currency <- as.factor(currency)  #舊物件轉為新物件"
+"0","class(currency)"
+"1","[1]"
+"1"," ""factor"""
+"1","
+"
