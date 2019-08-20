@@ -179,7 +179,7 @@ typeof(aWithNames)
 aWithNames
 ```
 
-List (不同元素間可有多種型式
+# List (不同元素間可有多種型式
 ```{r}
 b1<-list("a","b",c(1:10),TRUE)
 typeof(b1)
