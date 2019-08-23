@@ -1,0 +1,4 @@
+"0","classSurvey[logical_index,]"
+"2","Error in `[.tbl_df`(classSurvey, logical_index, ) : 
+  object 'logical_index' not found
+"

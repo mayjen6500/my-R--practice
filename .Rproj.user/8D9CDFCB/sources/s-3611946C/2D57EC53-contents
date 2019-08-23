@@ -1,0 +1,222 @@
+---
+title: "Untitled"
+author: '22'
+date: "2019/8/23"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+Vec1 <- c(1:6)
+Vec1
+```
+
+Matrix (矩陣)
+```{r}
+Mat1 <- matrix(
+  c(1:6), 2,3
+)
+Mat1
+```
+
+```{r}
+class(Mat1)
+```
+
+
+```{r}
+typeof(Mat1)
+```
+
+object extraction
+```{r}
+Mat1
+Mat1[[2]]    #取出方式 先往下再往右 
+Mat1[[6]]     #左上-左下-中上-中下-右上-右下
+```
+
+```{r}
+Mat2 <- matrix(
+  c("a","b","c","d"), 2, 2
+)
+Mat2
+```
+
+```{r}
+class(Mat2)
+typeof(Mat2)
+Mat2[[2]]
+Mat2[c(T,F,F,T)]
+```
+
+
+#7.3 Data Frame
+
+```{r}
+StuList <- list(
+  studentID=c(172,214,322,425,517),
+  names=c("小明","大雄","胖虎","小新","大白"),
+  grade=c(80,60,90,70,50)
+  )
+StuList 
+```
+
+```{r}
+stuDF <- data.frame(
+  studentID=c(172,214,322,425,517),
+  names=c("小明","大雄","胖虎","小新","大白"),
+  grade=c(80,60,90,70,50)
+  )
+stuDF
+```
+
+```{r}
+class(stuDF)
+typeof(StuDF)
+
+```
+
+data.frame()遇到變數輸入為character class時，內定會被轉成factor
+```{r}
+class(StuDF$names)
+
+StuDF$names <- as.character(StuDF$names)
+class(StuDF$names)
+```
+
+data.frame(..., stringsAsFactors = FALSE),不讓系統轉為factor
+```{r}
+StuDF2 <- data.frame(
+  studentID=c(172,214,322,425,517),
+  names=c("小明","大雄","胖虎","小新","大白"),
+  grade=c(80,60,90,70,50),
+  stringsAsFactors = FALSE
+  )
+StuDF2 
+```
+
+補:data frame的建立也可以用list去建好，再透過as.data.frame()去改變其class成data frame.
+
+```{r}
+class(StuList)
+as.data.frame(StuList) -> StuDF3
+
+class(StuDF3)
+StuDF3
+as.data.frame(StuList,stringsAsFactors = F) -> StuDF4
+class(StuDF4)
+StuDF4
+```
+
+
+#7.4 [.R , .C] object extraction
+```{r}
+LETTERS # R內設元素值為英文字母群的character vector
+chosenLETTERS <- LETTERS[1:15]   #取英文字母前15個
+matObj1 <- matrix(chosenLETTERS,5,3) #做成矩陣
+matObj1
+```
+
+```{r}
+chosenLETTERS[[8]]
+matObj1[[8]]  #雙[] 只取一個元素
+```
+
+矩陣取元素比較多元
+```{r}
+matObj1
+
+matObj1[3,2]
+
+matObj1[c(F,F,TRUE,F,F),c(F,TRUE,F)]
+
+
+matObj1[c(1,4),c(2,3)]  #前面rows 後面columns
+matObj1[c(T,F,F,T,F),c(F,T,T)] #跟上行同樣意思
+matObj1[c(1,4),c(F,T,T)] #可以混著搭 同樣意思
+```
+
+```{r}
+tolower(matObj1) #變小寫
+toupper(matObj1) #變大寫
+```
+
+##課堂練習
+```{r}
+library(readr)
+classSurvey <- 
+  read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/classSurvey.csv")
+```
+
+查詢classSurvey有多少觀察值？有多少變數？
+```{r}
+dim(classSurvey)
+
+
+nrow(classSurvey)
+ncol(classSurvey)
+```
+
+```{r}
+class(classSurvey)
+```
+
+
+取出**性別,學分數**
+從data frame視覺角度
+```{r}
+classSurvey[,]
+classSurvey[c(1:60),c(4,5)]
+classSurvey[c(1:60),c(F,F,F,T,T,F)]
+classSurvey[,c(4,5)]
+classSurvey[,4:5]
+classSurvey[,c(F,F,F,T,T,F)]  #每個都可以 意思相同
+
+```
+
+(答案是對的 電腦跑不出來)
+
+從R的角度 (即單純list vecotr角度)
+```{r}
+#classSurvey[]
+classSurvey[c("性別","本學期學分數")]
+```
+
+(答案是對的 電腦跑不出來)
+
+子樣本
+```{r}
+classSurvey[logical_index,]
+```
+
+
+
+
+
+
+
+
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
