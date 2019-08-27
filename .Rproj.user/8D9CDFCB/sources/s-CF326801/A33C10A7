@@ -1,0 +1,27 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1566879789290.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "716496368",
+    "id" : "A33C10A7",
+    "lastKnownWriteTime" : 1566889917,
+    "last_content_update" : 1566889917818,
+    "path" : "C:/Users/聖博/Desktop/GitHub/my-R--practice/2019-08-27-mid.Rmd",
+    "project_path" : "2019-08-27-mid.Rmd",
+    "properties" : {
+        "cursorPosition" : "187,31",
+        "last_setup_crc32" : "CF326801bb338d19",
+        "scrollLine" : "182",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
