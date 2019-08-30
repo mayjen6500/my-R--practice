@@ -1,0 +1,5 @@
+"0","library(readr)"
+"0","exData3 <- read_csv(""https://raw.githubusercontent.com/tpemartin/github-data/master/exData3.csv"","
+"0","                    col_types = cols("
+"0","                      匯率 = col_number(),"
+"0","                      期間 = col_character()))"

@@ -1,0 +1,2 @@
+"0","logiAsiaCrisis <- exData3$isAsiaCrisis"
+"0","exData3[logiAsiaCrisis, ]"

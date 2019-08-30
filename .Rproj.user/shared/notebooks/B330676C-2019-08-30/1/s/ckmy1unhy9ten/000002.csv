@@ -1,0 +1,26 @@
+"0","exData3$isAsiaCrisis <- (exData3$期間 >= ymd(""1997-06-01"") & exData3$期間 <= ymd(""1998-12-01"") )"
+"2","Warning messages:
+"
+"2","1: "
+"2","In grepl(""|||"", what, fixed = TRUE) :"
+"2","
+ "
+"2"," input string 1 is invalid in this locale
+"
+"2","2: "
+"2","In grepl(""|||"", what, fixed = TRUE) :"
+"2","
+ "
+"2"," input string 1 is invalid in this locale
+"
+"2","3: "
+"2","In grepl(""|||"", what, fixed = TRUE) :"
+"2","
+ "
+"2"," input string 1 is invalid in this locale
+"
+"0","class(exData3$isAsiaCrisis)"
+"1","[1]"
+"1"," ""logical"""
+"1","
+"

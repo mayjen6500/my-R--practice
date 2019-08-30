@@ -1,0 +1,4 @@
+"0","fx <- function(x,alpha){"
+"0","  f_value <- x+alpha"
+"0","  return(f_value)"
+"0","}"

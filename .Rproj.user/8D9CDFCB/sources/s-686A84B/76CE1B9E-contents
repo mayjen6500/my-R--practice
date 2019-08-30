@@ -1,0 +1,119 @@
+---
+title: "CH.8 function"
+author: '22'
+date: "2019/8/30"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##第 8 章 Function 
+```{r}
+utility_cobb_douglass <- function(x,y,.alpha,.beta){
+  utilValue <- x^.alpha*y^.beta # 程序產生output值
+  return(utilValue) # 傳回output值
+}
+```
+
+```{r}
+class(utility_cobb_douglass)
+```
+
+```{r}
+utility_cobb_douglass(1,2,0.5,0.8)
+```
+
+f(x,/alpha) = x+alpha
+```{r}
+fx <- function(x,alpha){
+  f_value <- x+alpha
+  return(f_value)
+}
+```
+
+```{r}
+fx(3,6)
+fx(-2,0.5)
+```
+
+
+範例一 供需函數
+```{r}
+supply_fun <- function(P,a,b){
+  Qs <- a+b*P
+  return(Qs)
+}
+
+demand_fun <- function(P,c,d){
+  Qd <- c-d*P
+  return(Qd)
+}
+```
+
+```{r}
+supply_fun(1,0,1)
+demand_fun(1,5,1)
+demand_fun(1,5,1) - supply_fun(1,0,1)
+```
+
+範例2
+```{r}
+library(readr)
+transcriptDataFinal <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/transcriptDataFinal.csv")
+```
+
+```{r}
+studentID <-"92aS67fee" 
+transcriptDataFinal$學號==studentID -> logiChosenStudent
+
+subSample <- transcriptDataFinal[logiChosenStudent,]
+
+sum(subSample$學期成績*subSample$學分數)/
+  sum(subSample$學分數) -> GPA
+```
+因此 我們可以定義一個「input學號便可output其GPA」的函數
+
+```{r}
+gpa_fun <- function(studentID){
+  transcriptDataFinal$學號==studentID -> logiChosenStudent
+  
+  subSample <- transcriptDataFinal[logiChosenStudent,]
+  
+  sum(subSample$學期成績*subSample$學分數)/
+    sum(subSample$學分數) -> GPA
+  return(GPA)
+}
+```
+
+```{r}
+gpa_fun("92aS67fee")
+```
+
+
+
+
+
+
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
