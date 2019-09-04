@@ -74,6 +74,7 @@ yyyymmdd <- ymd(str_c(yyyy,mm,"01",sep="-"))
 twDates
 ```
 
+寫成函數
 ```{r}
 date_convert_twYM <- function(twDates){library(stringr); library(lubridate)
 yyyy<-as.integer(str_extract(twDates,"(?<=(民國))[:digit:]+"))+1911
@@ -81,11 +82,72 @@ mm<-str_extract(twDates,"[:digit:]+(?=月)")
 yyyymmdd <- ymd(str_c(yyyy,mm,"01",sep="-"))
 return(yyyymmdd)
 }
+date_convert_twYM(twDates)
+```
+
+
+#8.1.2 預設值defaults
+
+```{r}
+utility_cobb_douglass2 <- function(x,y,.alpha=0.5,.beta=0.5){
+  utilValue <- x^.alpha*y^.beta
+  return(utilValue)
+}
+```
+
+
+```{r}
+utility_cobb_douglass2(1,2) # 使用預設值
+utility_cobb_douglass2(1,2,0.5,0.8) # 自定參數值
+```
+
+Q.先前的date_convert_twYM()函數一律把年月資料加上「01」日，請改寫函數讓“01”為「日」的預設值。
+
+(上面的沒有預設值，下面有設預設值) 差別在有加 dd="01"
+```{r}
+yyyy<-as.integer(str_extract(twDates,"(?<=(民國))[:digit:]+"))+1911
+mm<-str_extract(twDates,"[:digit:]+(?=月)")
+yyyymmdd <- ymd(str_c(yyyy,mm,"01",sep="-"))
+yyyymmdd
 ```
 
 ```{r}
+date_convert_twYM <-function(twDates,dd="01"){library(stringr); library(lubridate)
+yyyy<-as.integer(str_extract(twDates,"(?<=(民國))[:digit:]+"))+1911
+mm<-str_extract(twDates,"[:digit:]+(?=月)")
+yyyymmdd <- ymd(str_c(yyyy,mm,dd,sep="-"))
+return(yyyymmdd)
+}
 
 ```
+
+```{r}
+sample(99:103,15,replace = T)-> yy
+sample(1:12,15,replace=T)-> mm
+str_c("民國",str_pad(yy,3,"left","0"),"年",mm,"月")->twDates_New
+
+
+twDates_New
+date_convert_twYM(twDates_New)
+date_convert_twYM(twDates_New,dd="04")
+date_convert_twYM(twDates_New,dd="15")
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

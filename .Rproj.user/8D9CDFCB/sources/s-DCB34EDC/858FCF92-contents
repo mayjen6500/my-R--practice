@@ -1,33 +1,13 @@
 ---
 title: "Untitled"
 author: '22'
-date: "2019/9/2"
+date: "2019/9/4"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
-```{r}
-library(lubridate)
-ymd_hms("1973-02-21 12:05:22",tz="America/New_York")
--> fromDateTime
-with_tz(fromDateTime, tzone="Asia/Taipei") -> toDateTime
-toDateTime
-```
-```{r}
-
-```
-
-
-
-
-
-
-
-
-
 
 ## R Markdown
 
