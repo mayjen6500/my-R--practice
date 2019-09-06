@@ -1,0 +1,231 @@
+---
+title: "Untitled"
+author: '22'
+date: "2019/9/6"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+#8-4
+```{r}
+utility_cobb_douglass <- function(x,y,.alpha=0.5,.beta=0.5){
+  utilValue <- x^.alpha*y^.beta
+  return(utilValue)
+}
+```
+
+不寫input argument名稱
+input順序要依原始函數定義順序
+```{r}
+utility_cobb_douglass(1,2,0.5,0.8)
+```
+
+寫input argument(beta alpha)名稱
+順序可調換
+```{r}
+utility_cobb_douglass(1,2,.beta=0.8,.alpha=0.5)
+```
+
+
+## 9. Iteration
+
+```{r}
+load(url("https://www.dropbox.com/s/duh5aaqgl2f5m3z/loopTranscriptData.Rda?raw=1"))
+studentIds <- unique(transcriptDataFinal$學號) # 全部可能學號
+studentIds5 <- studentIds[1:5] # 前5筆學號
+studentIds5
+```
+
+任務：針對studentIds5裡的學號一一進行print()
+9.1.1 作法一
+```{r}
+for(i in studentIds5){ 
+  print(i) 
+}
+```
+
+9.1.2 作法二
+```{r}
+for(i in c(1:5)){ 
+  print(i) 
+}
+```
+
+```{r}
+for(i in c(1:5)){ 
+  print(i)
+  print(studentIds5[[i]]) 
+}
+```
+
+9.1.3 作法三：seq_along()
+```{r}
+for(i in seq_along(studentIds5)){
+  print(i)
+  print(studentIds5[[i]])
+}
+```
+
+##任務：一一檢查gmailAddress每個元素，若沒有寫“@gmail.com”則加上
+```{r}
+gmailAddress <- c(
+  "tim@gmail.com",
+  "anita",
+  "yellen@gmail.com",
+  "huang@gmail.com"
+)
+```
+
+(先練習，如何print(gmailAddress))
+一
+```{r}
+for(i in gmailAddress){
+  print(i)
+}
+```
+二
+```{r}
+for(i in c(1:4)){
+  print(i)
+  print(gmailAddress[[i]])
+}
+```
+三
+```{r}
+for(i in seq_along(gmailAddress)){
+  print(gmailAddress[[i]])
+}
+```
+
+(回答問題)
+Sequence source是什麼？
+```{r}
+gmailAddress
+```
+
+完成以下body程序：
+令i <- 1，
+檢查gmailAddress中「第i個」元素，若沒有寫“@gmail.com”則加上。
+```{r}
+i <- 1
+library(stringr)
+
+if(!str_detect(gmailAddress[[i]],"@gmail.com")){
+  correctGmailAddress <-
+    str_c(gmailAddress[[i]],"@gmail.com")
+  gmailAddress[[i]] <- correctGmailAddress
+}
+```
+
+```{r}
+gmailAddress[[i]]
+```
+
+完成for loop任務：檢查gmailAddress中「每個」元素，若沒有寫“@gmail.com”則加上。
+```{r}
+
+for(i in seq_along(gmailAddress)){
+  if(!str_detect(gmailAddress[[i]],"@gmail.com")){
+  correctGmailAddress <-
+    str_c(gmailAddress[[i]],"@gmail.com")
+  gmailAddress[[i]] <- correctGmailAddress
+  }
+}
+gmailAddress
+```
+
+
+補充:
+```{r}
+gmailAddress
+seq_along(gmailAddress)
+```
+
+```{r}
+length(gmailAddress)
+1:length(gmailAddress)
+```
+
+
+
+##課堂練習
+Commit history
+```{r}
+load(url("https://www.dropbox.com/s/qnz9paigf61yjus/commitHistory.Rda?raw=1"))
+```
+
+任務一：存下來每個commit的author
+
+1.sequence source
+```{r}
+commitHistory
+```
+
+2.body : print (第i個)commit的source
+```{r}
+i <- 1
+print(commitHistory[[i]][["commit"]][["author"]][["name"]])
+```
+
+3.for loop
+```{r}
+for(i in seq_along(commitHistory)){
+ print(commitHistory[[i]][["commit"]][["author"]][["name"]])
+}
+```
+
+任務二：存下來每個commit的committer
+```{r}
+for(i in seq_along(commitHistory)){
+  print(commitHistory[[i]][["commit"]][["committer"]][["name"]])
+}
+```
+
+任務三：存下來每個author與committer同人的commitDate。
+```{r}
+for( i in seq_along(commitHistory)){
+  print(
+    str_c(
+      "Author is ",
+      commitHistory[[i]][["commit"]][["author"]][["name"]],
+      ". Committer is ",
+      commitHistory[[i]][["commit"]][["committer"]][["name"]]
+    )
+  )
+}
+```
+
+任務四(補充): print每個commit的author等於committer的邏輯判斷結果
+
+```{r}
+for(i in seq_along(commitHistory)){
+  (commitHistory[[i]][["commit"]][["author"]][["name"]]==commitHistory[[i]][["commit"]][["committer"]][["name"]]) -> logiResult
+  print(logiResult)
+   }
+```
+
+
+
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
