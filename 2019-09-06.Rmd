@@ -207,6 +207,121 @@ for(i in seq_along(commitHistory)){
 ```
 
 
+#9.2 Output
+
+
+```{r}
+saveCharacter <- vector("character",5)
+saveCharacter
+```
+
+```{r}
+saveNumeric <- vector("numeric",5)
+saveNumeric
+```
+
+```{r}
+saveLogical <- vector("logical",5)
+saveLogical
+```
+
+```{r}
+saveList <- vector("list",5)
+saveList
+```
+
+```{r}
+# 把"你好"存在saveCharacter第3個位置
+saveCharacter # 儲存前
+saveCharacter[[3]] <- "你好"
+saveCharacter # 儲存後
+```
+
+```{r}
+# 把 72.3 存在saveNumeric第3個位置
+saveNumeric # 儲存前
+saveNumeric[[3]] <- 72.3
+saveNumeric # 儲存後
+```
+
+```{r}
+# 把 TRUE 存在saveLogical第3個位置
+saveLogical # 儲存前
+saveLogical[[3]] <- TRUE
+saveLogical # 儲存後
+```
+
+```{r}
+# 把 list(姓名="小明",電話="02-86741111") 存在saveList第3個位置
+saveList # 儲存前
+saveList[[3]] <- list(姓名="小明",電話="02-86741111")
+saveList # 儲存後
+```
+
+有儲存需求的for loop:
+
+決定儲存容器要存的「資料型態」及「資料個數」。
+
+1.找出sequence source。
+
+2.Body內容：
+
+先將任務中的「每個」改成「第i個」以確認body內容
+
+任務中有儲存需要時，存在儲存容器的「第i個」位置
+
+3.組合「每個」任務的for loop，使用以下模式：
+
+```{r}
+load(url("https://www.dropbox.com/s/duh5aaqgl2f5m3z/loopTranscriptData.Rda?raw=1"))
+studentIds <- unique(transcriptDataFinal$學號) # 全部可能學號
+studentIds5 <- studentIds[1:5] # 前5筆學號
+```
+
+任務: 將transcriptDataFinal資料中每個學號的平均成績算出來並儲存（使用gpa_fun()）
+
+### Saving container
+```{r}
+saveGPA5 <- vector("numeric",length(studentIds5))
+saveGPA5
+```
+
+### 1.sequence source
+```{r}
+studentIds5
+```
+
+### 2.body
+```{r}
+i <- 1
+
+gpa_fun(studentIds5[[i]]) -> saveGPA5[[i]]
+```
+
+```{r}
+saveGPA5
+```
+
+
+### 3. for loop
+```{r}
+saveGPA5 <- vector("numeric",length(studentIds5))
+for(i in seq_along(studentIds5)){
+  gpa_fun(studentIds5[[i]]) -> saveGPA5[[i]]
+}
+  
+saveGPA5
+```
+
+
+
+
+
+
+
+
+
+
 
 
 
