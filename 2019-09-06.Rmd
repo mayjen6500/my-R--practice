@@ -258,7 +258,7 @@ saveList[[3]] <- list(姓名="小明",電話="02-86741111")
 saveList # 儲存後
 ```
 
-有儲存需求的for loop:
+------------------有儲存需求的for loop---------------------------
 
 決定儲存容器要存的「資料型態」及「資料個數」。
 
@@ -272,6 +272,7 @@ saveList # 儲存後
 
 3.組合「每個」任務的for loop，使用以下模式：
 
+###例題一
 ```{r}
 load(url("https://www.dropbox.com/s/duh5aaqgl2f5m3z/loopTranscriptData.Rda?raw=1"))
 studentIds <- unique(transcriptDataFinal$學號) # 全部可能學號
@@ -321,6 +322,99 @@ saveGPA5
 
 
 
+
+
+###例題二
+
+任務一：存下來每個commit的author
+```{r}
+load(url("https://www.dropbox.com/s/qnz9paigf61yjus/commitHistory.Rda?raw=1"))
+```
+###0.saving container
+```{r}
+saveCommitAuthor <-
+  vector("character",length(commitHistory))
+```
+###1. sequence source
+```{r}
+commitHistory
+```
+###2.body
+```{r}
+i <- 1
+
+commitHistory[[i]]$commit$author$name -> saveCommitAuthor[[i]]
+```
+###3. for loop
+```{r}
+saveCommitAuthor <-
+  vector("character",length(commitHistory))
+for(i in seq_along(commitHistory)){
+  commitHistory[[i]]$commit$author$name -> saveCommitAuthor[[i]]
+}
+
+saveCommitAuthor
+```
+
+
+任務三：存下來每個author與committer同人的commitDate。
+
+過度任務:
+存下來每個commit的author committer commitDate
+存下來每個commit的author == commiter 的結果
+###0.saving container
+```{r}
+saveEveryThing <- vector("list",length(commitHistory))
+saveSameLogi <- vector("logical",length(commitHistory))
+```
+###1.sequence source
+```{r}
+commitHistory
+```
+###2. body
+```{r}
+i <- 1
+
+author_i <- commitHistory[[i]]$commit$author$name
+committer_i <- commitHistory[[i]]$commit$committer$name
+commitDate_i <- commitHistory[[i]]$commit$committer$date
+
+(author_i==committer_i) -> saveSameLogi[[i]]
+list(
+  author = author_i,
+  committer = committer_i,
+  commitDate = commitDate_i
+) -> saveEveryThing[[i]]
+```
+
+```{r}
+saveEveryThing
+saveSameLogi
+```
+###3. for loop
+```{r}
+saveEveryThing <- vector("list",length(commitHistory))
+saveSameLogi <- vector("logical",length(commitHistory))
+for(i in seq_along(commitHistory)){
+  author_i <- commitHistory[[i]]$commit$author$name
+committer_i <- commitHistory[[i]]$commit$committer$name
+commitDate_i <- commitHistory[[i]]$commit$committer$date
+
+(author_i==committer_i) -> saveSameLogi[[i]]
+list(
+  author = author_i,
+  committer = committer_i,
+  commitDate = commitDate_i
+) -> saveEveryThing[[i]]
+
+saveEveryThing[[i]]
+}
+```
+
+```{r}
+saveEveryThing[saveSameLogi] -> saveVaildCommitDate
+saveVaildCommitDate
+```
 
 
 
